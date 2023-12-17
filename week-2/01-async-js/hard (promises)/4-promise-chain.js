@@ -6,18 +6,46 @@
  */
 
 function wait1(t) {
+    return new Promise((resolve,reject)=>{
+        setTimeout(() => {
+            resolve(t);
+        }, t*1000);
+    })
 
 }
 
 function wait2(t) {
+    return new Promise((resolve,reject)=>{
+        setTimeout(() => {
+            resolve(t);
+        }, t*1000);
+    })
 
 }
 
 function wait3(t) {
+    return new Promise((resolve,reject)=>{
+        setTimeout(() => {
+            resolve(t);
+        }, t*1000);
+    })
 
 }
 
 function calculateTime(t1, t2, t3) {
+    let p = new Promise((ansRes, rej) => {
+        wait1(t1).then((r1) => {
+
+            wait2(t2).then((r2) => {
+                wait3(t3).then((r3) => {
+                    ansRes((r1 + r2 + r3) * 1000);
+                })
+            })
+
+        })
+    })
+
+    return p;
 
 }
 
